@@ -13,7 +13,7 @@ echo "Date: $(date)"
 echo "Starting Odoo 13 Normal on port 8069..."
 docker exec -d odoo_v13_test python3 /opt/odoo/odoo-bin \
   -c /etc/odoo/odoo.conf \
-  -d production_db \
+  -d entretien-maconnais \
   --http-port=8069
 
 # Wait a few seconds for startup

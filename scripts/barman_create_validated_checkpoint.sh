@@ -23,21 +23,21 @@ BACKUP_NAME="v13_validated_$(date +%Y%m%d)"
 
 # Create validated checkpoint via Barman
 echo "Creating validated checkpoint: $BACKUP_NAME"
-ssh production-consolidation "barman backup odoo_server --name='$BACKUP_NAME'"
+ssh -i ~/.ssh/hetzner_cpx41_key root@178.105.49.214 "barman backup odoo-production --name='$BACKUP_NAME'"
 
 # Show backup details
 echo ""
 echo "Showing backup details..."
-ssh production-consolidation "barman show-backup odoo_server latest"
+ssh -i ~/.ssh/hetzner_cpx41_key root@178.105.49.214 "barman show-backup odoo-production latest"
 
 # Verify Barman status
 echo ""
 echo "Verifying Barman status..."
-ssh production-consolidation "barman check odoo_server"
+ssh -i ~/.ssh/hetzner_cpx41_key root@178.105.49.214 "barman check odoo-production"
 
 echo ""
 echo "✅ Validated checkpoint created"
 echo "  Checkpoint name: $BACKUP_NAME"
-echo "  Location: production-consolidation (Barman)"
+echo "  Location: 178.105.49.214 (Barman)"
 echo ""
 echo "Migration v12→v13 is now complete and validated!"

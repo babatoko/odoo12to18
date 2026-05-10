@@ -32,7 +32,7 @@ docker rm odoo_v13_test 2>/dev/null || true
 # Create test container with Odoo 13 Normal
 echo "Creating test container with Odoo 13 Normal..."
 docker run -d --name odoo_v13_test \
-  -v /opt/odoo_13:/opt/odoo \
+  -v $HOME/odoo_migration/odoo_13:/opt/odoo \
   -v /var/lib/postgresql/data:/var/lib/postgresql/data \
   -p 8069:8069 \
   odoo:13

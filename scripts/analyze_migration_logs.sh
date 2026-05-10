@@ -8,7 +8,7 @@
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <logfile>"
-    echo "Example: $0 /logs/migration_v13_phase_a_20260510_100000.log"
+    echo "Example: $0 ./logs/migration_v13_phase_a_20260510_100000.log"
     exit 1
 fi
 

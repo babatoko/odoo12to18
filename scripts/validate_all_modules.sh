@@ -11,7 +11,7 @@ echo ""
 # Query database to check module states
 echo "Checking module states in database..."
 
-docker exec odoo_migration psql -U odoo -d production_db -c "
+docker exec odoo_migration psql -U odoo -d entretien-maconnais -c "
 SELECT
     name,
     state,
@@ -19,11 +19,11 @@ SELECT
 FROM ir_module_module
 WHERE state IN ('installed', 'to upgrade', 'to install')
 ORDER BY name;
-" | tee /logs/module_states_$(date +%Y%m%d_%H%M%S).txt
+" | tee ./logs/module_states_$(date +%Y%m%d_%H%M%S).txt
 
 echo ""
 echo "--- Module State Summary ---"
-docker exec odoo_migration psql -U odoo -d production_db -t -c "
+docker exec odoo_migration psql -U odoo -d entretien-maconnais -t -c "
 SELECT
     state,
     COUNT(*) as count
@@ -35,7 +35,7 @@ ORDER BY count DESC;
 
 echo ""
 echo "--- Modules with Issues (if any) ---"
-docker exec odoo_migration psql -U odoo -d production_db -c "
+docker exec odoo_migration psql -U odoo -d entretien-maconnais -c "
 SELECT
     name,
     state

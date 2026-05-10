@@ -12,7 +12,7 @@ if [ -z "$1" ]; then
     echo "Usage: $0 <backup_id>"
     echo ""
     echo "To find backup_id, run:"
-    echo "  ssh production-consolidation 'barman list-backup odoo_server | grep pre_migration_v13'"
+    echo "  ssh -i ~/.ssh/hetzner_cpx41_key root@178.105.49.214 'barman list-backup odoo-production | grep pre_migration_v13'"
     exit 1
 fi
 
@@ -26,7 +26,7 @@ echo "Target path: $TARGET_PATH"
 
 # Restore via Barman
 echo "Restoring backup..."
-ssh production-consolidation "barman recover odoo_server $BACKUP_ID $TARGET_PATH --remote-ssh-command 'ssh postgres@odoo_migration_server'"
+ssh -i ~/.ssh/hetzner_cpx41_key root@178.105.49.214 "barman recover odoo-production $BACKUP_ID $TARGET_PATH --remote-ssh-command 'ssh postgres@odoo_migration_server'"
 
 echo "✅ Backup restored successfully"
 echo "  Backup ID: $BACKUP_ID"

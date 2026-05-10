@@ -30,7 +30,7 @@ if [ "$CONFIRMED" != "yes" ]; then
     exit 1
 fi
 
-LOGFILE="/logs/migration_v13_retry_${MODULE_NAME}_$(date +%Y%m%d_%H%M%S).log"
+LOGFILE="./logs/migration_v13_retry_${MODULE_NAME}_$(date +%Y%m%d_%H%M%S).log"
 
 echo "Retrying migration for module: $MODULE_NAME"
 echo "Logfile: $LOGFILE"
@@ -38,7 +38,7 @@ echo "Logfile: $LOGFILE"
 # Retry migration for specific module
 docker exec odoo_migration python3 /opt/openupgrade/odoo-bin \
   -c /etc/odoo/odoo.conf \
-  -d production_db \
+  -d entretien-maconnais \
   -u "$MODULE_NAME" \
   --stop-after-init \
   --log-level=info \

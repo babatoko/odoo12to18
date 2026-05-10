@@ -18,7 +18,7 @@ if [ "$CONFIRMED" != "yes" ]; then
     exit 1
 fi
 
-LOGFILE="/logs/migration_v13_resume_$(date +%Y%m%d_%H%M%S).log"
+LOGFILE="./logs/migration_v13_resume_$(date +%Y%m%d_%H%M%S).log"
 
 echo "Resuming migration..."
 echo "Logfile: $LOGFILE"
@@ -26,7 +26,7 @@ echo "Logfile: $LOGFILE"
 # Resume migration
 docker exec odoo_migration python3 /opt/openupgrade/odoo-bin \
   -c /etc/odoo/odoo.conf \
-  -d production_db \
+  -d entretien-maconnais \
   --stop-after-init \
   --log-level=info \
   2>&1 | tee "$LOGFILE"

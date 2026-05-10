@@ -9,8 +9,8 @@ set -e
 echo "=== Phase A: OpenUpgrade Migration v12→v13 ==="
 echo "Date: $(date)"
 
-LOGFILE="/logs/migration_v13_phase_a_$(date +%Y%m%d_%H%M%S).log"
-mkdir -p /logs
+LOGFILE="./logs/migration_v13_phase_a_$(date +%Y%m%d_%H%M%S).log"
+mkdir -p ./logs
 
 echo "Starting migration with OpenUpgrade fork..."
 echo "Logfile: $LOGFILE"
@@ -18,7 +18,7 @@ echo "Logfile: $LOGFILE"
 # Run migration with OpenUpgrade
 docker exec odoo_migration python3 /opt/openupgrade/odoo-bin \
   -c /etc/odoo/odoo.conf \
-  -d production_db \
+  -d entretien-maconnais \
   -u all \
   --stop-after-init \
   --log-level=info \
