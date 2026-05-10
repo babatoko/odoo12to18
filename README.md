@@ -6,7 +6,7 @@ Scripts automatisés pour migration incrémentale selon méthodologie OpenUpgrad
 
 **Distinction importante :**
 - **OpenUpgrade 13.0** (fork) : utilisé UNIQUEMENT pour la migration
-- **Odoo 13 Normal** : utilisé pour le service production
+- **Odoo 13 Normal** : utilisé pour le serveur test (validation avant production)
 
 ## Workflow complet
 
@@ -133,7 +133,7 @@ ssh production-consolidation "barman check odoo_server"
 ### Containers Docker
 
 - **odoo_migration** : Container migration (OpenUpgrade fork), port 8013
-- **odoo_v13_prod** : Container production (Odoo 13 Normal), port 8069
+- **odoo_v13_test** : Container test (Odoo 13 Normal), port 8069
 
 ## Logs
 
